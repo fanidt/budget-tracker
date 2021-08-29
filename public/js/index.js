@@ -1,18 +1,51 @@
 let transactions = [];
 let myChart;
 
+// fetch("/api/transaction")
+//   .then(response => {
+//     return response.json();
+//   })
+//   .then(data => {
+//     // save db data on global variable
+//     transactions = data;
+
+//     populateTotal();
+//     populateTable();
+//     populateChart();
+//   });
+
+// Credits to Alexander Gorshkov for the fetch code
 fetch("/api/transaction")
-  .then(response => {
+  .then((response) => {
     return response.json();
   })
-  .then(data => {
+  .then((data) => {
     // save db data on global variable
     transactions = data;
 
-    populateTotal();
-    populateTable();
-    populateChart();
+    // if data exists in Index DB
+    if (!navigator.onLine) {
+      // open a transaction on your db
+      const transaction = db.transaction(["new-budget"], "readwrite");
+
+      // access your object store
+      const budgetObjectStore = transaction.objectStore("new-budget");
+
+      // get all records from store and set to a variable
+      const getAll = budgetObjectStore.getAll();
+      getAll.onsuccess = function () {
+        transactions = getAll.result.concat(transactions);
+        populateTotal();
+        populateTable();
+        populateChart();
+      };
+    } else {
+      populateTotal();
+      populateTable();
+      populateChart();
+    }
   });
+
 
 function populateTotal() {
   // reduce transaction amounts to a single total value
