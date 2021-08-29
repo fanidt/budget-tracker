@@ -74,7 +74,7 @@ getAll.onsuccess = function() {
           // clear all items in your store
           pizzaObjectStore.clear();
 
-          alert('All saved pizza has been submitted!');
+          console.log('All saved pizza has been submitted!');
         })
         .catch(err => {
           console.log(err);
