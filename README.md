@@ -9,7 +9,6 @@
  -[Badges](#Badges) <br />
  -[Screenshot](#Screenshot) <br />
  -[Installation](#Installation) <br />
- -[Usage](#Usage) <br />
  -[Support](#Support) <br />
  -[Contributions](#Contributions) <br />
  -[Authors](#Authors) <br />
@@ -18,8 +17,10 @@
   ## Description: <br />
   An application for money tracking that works both online and offline
 
-  ##User Story: <br />
-  j
+  ## User Story: <br />
+  AS AN avid traveler<br />
+I WANT to be able to track my withdrawals and deposits with or without a data/internet connection<br />
+SO THAT my account balance is accurate when I am traveling <br />
   
   ## Badges: <br />
   ![alt text](https://img.shields.io/badge/license-MIT-green)
